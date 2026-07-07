@@ -159,3 +159,8 @@ C:\Angular & .NET CORE\CursosAPI\CursosAPI\obj\Debug\net10.0\staticwebassets.upT
 C:\Angular & .NET CORE\CursosAPI\CursosAPI\obj\Debug\net10.0\CursosAPI.sourcelink.json
 C:\Angular & .NET CORE\CursosAPI\CursosAPI\bin\Debug\net10.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Angular & .NET CORE\CursosAPI\CursosAPI\bin\Debug\net10.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Angular & .NET CORE\CursosAPI\CursosAPI\obj\Debug\net10.0\CursosAPI.MvcApplicationPartsAssemblyInfo.cs
+C:\Angular & .NET CORE\CursosAPI\CursosAPI\bin\Debug\net10.0\Microsoft.AspNetCore.OpenApi.dll
+C:\Angular & .NET CORE\CursosAPI\CursosAPI\bin\Debug\net10.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Angular & .NET CORE\CursosAPI\CursosAPI\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Angular & .NET CORE\CursosAPI\CursosAPI\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerUI.dll
