@@ -43,6 +43,7 @@ namespace CursosAPI.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status409Conflict)]
         [Authorize(Roles = $"{nameof(Roles.ADMIN)}, {nameof(Roles.INSTRUTOR)}")]
         public async Task<IActionResult> Create([FromBody] CreateCursoDto dto)
         {
