@@ -1,9 +1,10 @@
 ﻿using CursosAPI.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace CursosAPI.Data
 {
-    public class CursoContext : DbContext
+    public class CursoContext : IdentityDbContext<Usuario>
     {
         public CursoContext(DbContextOptions<CursoContext> options) : base(options)
         {
@@ -12,6 +13,8 @@ namespace CursosAPI.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            base.OnModelCreating(builder);
+
             builder.Entity<Curso>()
                 .HasIndex(curso => curso.Categoria);
 

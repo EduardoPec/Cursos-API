@@ -1,6 +1,7 @@
 ﻿using CursosAPI.Dtos;
 using CursosAPI.Exceptions;
 using CursosAPI.Services.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CursosAPI.Controllers
@@ -42,6 +43,7 @@ namespace CursosAPI.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [Authorize(Roles = $"{nameof(Roles.ADMIN)}, {nameof(Roles.INSTRUTOR)}")]
         public async Task<IActionResult> Create([FromBody] CreateCursoDto dto)
         {
             try
@@ -62,6 +64,7 @@ namespace CursosAPI.Controllers
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [Authorize(Roles = $"{nameof(Roles.ADMIN)}, {nameof(Roles.INSTRUTOR)}")]
         public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateCursoDto dto)
         {
             try
@@ -78,6 +81,7 @@ namespace CursosAPI.Controllers
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [Authorize(Roles = nameof(Roles.ADMIN))]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
             try

@@ -4,6 +4,7 @@ using CursosAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CursosAPI.Migrations
 {
     [DbContext(typeof(CursoContext))]
-    partial class CursoContextModelSnapshot : ModelSnapshot
+    [Migration("20260706143846_Adicionando Usuario com autenticacao e autorizacao")]
+    partial class AdicionandoUsuariocomautenticacaoeautorizacao
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

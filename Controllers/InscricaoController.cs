@@ -2,6 +2,7 @@
 using CursosAPI.Exceptions;
 using CursosAPI.Services;
 using CursosAPI.Services.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,6 +22,7 @@ namespace CursosAPI.Controllers
 
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [Authorize(Roles = nameof(Roles.ADMIN))]
         public async Task<IActionResult> GetAll()
         {
             var inscricoes = await _inscricaoService.GetAllAsync();
@@ -30,6 +32,7 @@ namespace CursosAPI.Controllers
         [HttpGet("estudantes/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [Authorize(Roles = nameof(Roles.ADMIN))]
         public async Task<IActionResult> GetByEstudantes(int id)
         {
             var inscricoes = await _inscricaoService.GetByEstudanteIdAsync(id);
@@ -44,6 +47,7 @@ namespace CursosAPI.Controllers
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [Authorize(Roles = nameof(Roles.ADMIN))]
         public async Task<IActionResult> GetById(int id)
         {
             var inscricao = await _inscricaoService.GetByIdAsync(id);
@@ -58,6 +62,7 @@ namespace CursosAPI.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [Authorize(Roles = nameof(Roles.ADMIN))]
         public async Task<IActionResult> Create([FromBody] CreateInscricaoDto dto)
         {
             try
@@ -78,6 +83,7 @@ namespace CursosAPI.Controllers
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [Authorize(Roles = nameof(Roles.ADMIN))]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
             try

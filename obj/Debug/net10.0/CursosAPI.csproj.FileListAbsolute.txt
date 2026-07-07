@@ -156,3 +156,6 @@ C:\Angular & .NET CORE\CursosAPI\CursosAPI\obj\Debug\net10.0\CursosAPI.pdb
 C:\Angular & .NET CORE\CursosAPI\CursosAPI\obj\Debug\net10.0\CursosAPI.genruntimeconfig.cache
 C:\Angular & .NET CORE\CursosAPI\CursosAPI\obj\Debug\net10.0\ref\CursosAPI.dll
 C:\Angular & .NET CORE\CursosAPI\CursosAPI\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
+C:\Angular & .NET CORE\CursosAPI\CursosAPI\obj\Debug\net10.0\CursosAPI.sourcelink.json
+C:\Angular & .NET CORE\CursosAPI\CursosAPI\bin\Debug\net10.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Angular & .NET CORE\CursosAPI\CursosAPI\bin\Debug\net10.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll

@@ -2,6 +2,7 @@
 using CursosAPI.Exceptions;
 using CursosAPI.Services;
 using CursosAPI.Services.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CursosAPI.Controllers
@@ -20,6 +21,7 @@ namespace CursosAPI.Controllers
 
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [Authorize(Roles = nameof(Roles.ADMIN))]
         public async Task<IActionResult> GetAll()
         {
             var cursos = await _estudanteService.GetAllAsync();
@@ -29,6 +31,7 @@ namespace CursosAPI.Controllers
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [Authorize(Roles = nameof(Roles.ADMIN))]
         public async Task<IActionResult> GetById(int id)
         {
             var curso = await _estudanteService.GetByIdAsync(id);
@@ -43,6 +46,7 @@ namespace CursosAPI.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [Authorize(Roles = nameof(Roles.ADMIN))]
         public async Task<IActionResult> Create([FromBody] CreateEstudanteDto dto)
         {
             try
@@ -63,6 +67,7 @@ namespace CursosAPI.Controllers
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [Authorize(Roles = nameof(Roles.ADMIN))]
         public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateEstudanteDto dto)
         {
             try
@@ -79,6 +84,7 @@ namespace CursosAPI.Controllers
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [Authorize(Roles = nameof(Roles.ADMIN))]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
             try
