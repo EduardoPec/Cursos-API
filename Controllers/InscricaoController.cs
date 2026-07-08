@@ -1,9 +1,7 @@
 ﻿using CursosAPI.Dtos;
 using CursosAPI.Exceptions;
-using CursosAPI.Services;
 using CursosAPI.Services.Interface;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CursosAPI.Controllers
@@ -87,15 +85,8 @@ namespace CursosAPI.Controllers
         [Authorize(Roles = nameof(Roles.ADMIN))]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
-            try
-            {
-                await _inscricaoService.DeleteAsync(id);
-                return NoContent();
-            }
-            catch (NotFoundException ex)
-            {
-                return NotFound(ex.Message);
-            }
+            await _inscricaoService.DeleteAsync(id);
+            return NoContent();
         }
     }
 }

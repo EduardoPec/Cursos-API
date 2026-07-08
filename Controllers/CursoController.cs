@@ -1,5 +1,4 @@
 ﻿using CursosAPI.Dtos;
-using CursosAPI.Exceptions;
 using CursosAPI.Services.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -47,19 +46,8 @@ namespace CursosAPI.Controllers
         [Authorize(Roles = $"{nameof(Roles.ADMIN)}, {nameof(Roles.INSTRUTOR)}")]
         public async Task<IActionResult> Create([FromBody] CreateCursoDto dto)
         {
-            try
-            {
-                await _cursoService.CreateAsync(dto);
-                return StatusCode(StatusCodes.Status201Created);
-            }
-            catch (DuplicatedException ex)
-            {
-                return Conflict(ex.Message);
-            }
-            catch (NotFoundException ex)
-            {
-                return NotFound(ex.Message);
-            }
+            await _cursoService.CreateAsync(dto);
+            return StatusCode(StatusCodes.Status201Created);
         }
 
         [HttpPut("{id}")]
@@ -68,15 +56,8 @@ namespace CursosAPI.Controllers
         [Authorize(Roles = $"{nameof(Roles.ADMIN)}, {nameof(Roles.INSTRUTOR)}")]
         public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateCursoDto dto)
         {
-            try
-            {
-                await _cursoService.UpdateAsync(id, dto);
-                return NoContent();
-            }
-            catch (NotFoundException ex)
-            {
-                return NotFound(ex.Message);
-            }
+            await _cursoService.UpdateAsync(id, dto);
+            return NoContent();
         }
 
         [HttpDelete("{id}")]
@@ -85,16 +66,8 @@ namespace CursosAPI.Controllers
         [Authorize(Roles = nameof(Roles.ADMIN))]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
-            try
-            {
-                await _cursoService.DeleteAsync(id);
-                return NoContent();
-            }
-            catch (NotFoundException ex)
-            {
-                return NotFound(ex.Message);
-            }
-            
+            await _cursoService.DeleteAsync(id);
+            return NoContent();       
         }
     }
 }

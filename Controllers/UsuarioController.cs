@@ -1,6 +1,4 @@
 ﻿using CursosAPI.Dtos;
-using CursosAPI.Exceptions;
-using CursosAPI.Services;
 using CursosAPI.Services.Interface;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,15 +20,8 @@ namespace CursosAPI.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> CadastrarUsuario([FromBody] CreateUsuarioDto dto)
         {
-            try
-            {
-                await _usuarioService.Cadastra(dto);
-                return StatusCode(StatusCodes.Status201Created);
-            }
-            catch (FalhaCadastroException ex)
-            {
-                return BadRequest(ex.Message);
-            }
+             await _usuarioService.Cadastra(dto);
+             return StatusCode(StatusCodes.Status201Created);
         }
 
         [HttpPost("login")]
@@ -39,15 +30,8 @@ namespace CursosAPI.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> LogarUsuario([FromBody] LoginUsuarioDto dto)
         {
-            try
-            {
-                var token = await _usuarioService.Login(dto);
-                return Ok(token);
-            }
-            catch (NaoAutenticadoException ex)
-            {
-                return Unauthorized(ex.Message);
-            }
+            var token = await _usuarioService.Login(dto);
+            return Ok(token);
         }
     }
 }

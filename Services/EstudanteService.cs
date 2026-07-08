@@ -49,6 +49,7 @@ namespace CursosAPI.Services
             { 
                 throw new NotFoundException($"Estudante não encontrado! Id: {id}");
             }
+                       
             _mapper.Map(dto, estudante);
             await _repository.UpdateAsync(estudante);
         }

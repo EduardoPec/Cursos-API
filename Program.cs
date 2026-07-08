@@ -1,5 +1,6 @@
 using CursosAPI.Data;
 using CursosAPI.Data.Seed;
+using CursosAPI.Exceptions.Handlers;
 using CursosAPI.Models;
 using CursosAPI.Repositories;
 using CursosAPI.Repositories.Interface;
@@ -53,6 +54,11 @@ builder.Services.AddScoped<IInscricaoService, InscricaoService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 
+builder.Services.AddExceptionHandler<DuplicatedExceptionHandler>();
+builder.Services.AddExceptionHandler<FalhaCadastroExceptionHandler>();
+builder.Services.AddExceptionHandler<NaoAutenticadoExceptionHandler>();
+builder.Services.AddExceptionHandler<NotFoundExceptionHandler>();
+
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
@@ -80,6 +86,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseExceptionHandler(_ => { });
 
 app.UseHttpsRedirection();
 
