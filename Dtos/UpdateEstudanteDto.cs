@@ -2,7 +2,7 @@
 
 namespace CursosAPI.Dtos
 {
-    public class UpdateEstudanteDto
+    public record UpdateEstudanteDto
     {
         [Required(ErrorMessage = "O nome do estudante é obrigatório")]
         public string NomeCompleto { get; set; } = string.Empty;

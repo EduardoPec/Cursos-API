@@ -2,7 +2,7 @@
 
 namespace CursosAPI.Dtos
 {
-    public class CreateInscricaoDto
+    public record CreateInscricaoDto
     {
         public int EstudanteId { get; set; }
 

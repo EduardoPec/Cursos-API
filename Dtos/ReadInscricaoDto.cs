@@ -1,6 +1,6 @@
 ﻿namespace CursosAPI.Dtos
 {
-    public class ReadInscricaoDto
+    public record ReadInscricaoDto
     {
         public int Id { get; set; }
         public int EstudanteId { get; set; }

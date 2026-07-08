@@ -2,7 +2,7 @@
 
 namespace CursosAPI.Dtos
 {
-    public class LoginUsuarioDto
+    public record LoginUsuarioDto
     {
         [Required]
         public string Username { get; set; }

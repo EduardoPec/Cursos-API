@@ -2,7 +2,7 @@
 
 namespace CursosAPI.Dtos
 {
-    public class UpdateCursoDto
+    public record UpdateCursoDto
     {
         [Required(ErrorMessage = "O título do curso é obrigatório")]
         [StringLength(100, MinimumLength = 3, ErrorMessage = "O título deve ter entre 3 e 100 caracteres.")]

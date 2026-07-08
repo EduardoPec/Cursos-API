@@ -1,6 +1,6 @@
 ﻿namespace CursosAPI.Dtos
 {
-    public class ReadCursoDto
+    public record ReadCursoDto
     {
         public int Id { get; set; }
         public string Titulo { get; set; } = string.Empty;
