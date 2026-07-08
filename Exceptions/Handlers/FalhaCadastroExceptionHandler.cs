@@ -16,7 +16,8 @@ namespace CursosAPI.Exceptions.Handlers
             {
                 Title = "Houve um problema, falha no cadastro!",
                 Status = StatusCodes.Status400BadRequest,
-                Detail = exception.Message
+                Detail = exception.Message,
+                Instance = httpContext.Request.Path
             };
 
             httpContext.Response.StatusCode = problemDetails.Status.Value;

@@ -16,7 +16,8 @@ namespace CursosAPI.Exceptions.Handlers
             {
                 Title = "Conflito, recurso duplicado!",
                 Status = StatusCodes.Status409Conflict,
-                Detail = exception.Message
+                Detail = exception.Message,
+                Instance = httpContext.Request.Path
             };
 
             httpContext.Response.StatusCode = problemDetails.Status.Value;

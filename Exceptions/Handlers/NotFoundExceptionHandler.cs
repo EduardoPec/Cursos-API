@@ -16,7 +16,8 @@ namespace CursosAPI.Exceptions.Handlers
             {
                 Title = "Recurso não encontrado!",
                 Status = StatusCodes.Status404NotFound,
-                Detail = exception.Message
+                Detail = exception.Message,
+                Instance = httpContext.Request.Path
             };
 
             httpContext.Response.StatusCode = problemDetails.Status.Value;

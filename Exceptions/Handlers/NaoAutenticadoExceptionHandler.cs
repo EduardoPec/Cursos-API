@@ -16,7 +16,8 @@ namespace CursosAPI.Exceptions.Handlers
             {
                 Title = "Sem autorização, este usuário não está autorizado!",
                 Status = StatusCodes.Status401Unauthorized,
-                Detail = exception.Message
+                Detail = exception.Message,
+                Instance = httpContext.Request.Path
             };
 
             httpContext.Response.StatusCode = problemDetails.Status.Value;
