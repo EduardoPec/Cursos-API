@@ -54,10 +54,14 @@ builder.Services.AddScoped<IInscricaoService, InscricaoService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 
+builder.Services.AddProblemDetails();
+
 builder.Services.AddExceptionHandler<DuplicatedExceptionHandler>();
-builder.Services.AddExceptionHandler<FalhaCadastroExceptionHandler>();
-builder.Services.AddExceptionHandler<NaoAutenticadoExceptionHandler>();
 builder.Services.AddExceptionHandler<NotFoundExceptionHandler>();
+builder.Services.AddExceptionHandler<NaoAutenticadoExceptionHandler>();
+builder.Services.AddExceptionHandler<FalhaCadastroExceptionHandler>();
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+
 
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
@@ -87,7 +91,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseExceptionHandler(_ => { });
+app.UseExceptionHandler();
 
 app.UseHttpsRedirection();
 
