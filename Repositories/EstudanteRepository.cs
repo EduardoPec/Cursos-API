@@ -27,6 +27,12 @@ namespace CursosAPI.Repositories
             return estudante;
         }
 
+        public async Task<Estudante?> GetByEmailAsync(string email)
+        {
+            var estudanteEmail = await _context.Estudantes.FirstOrDefaultAsync(e => e.Email == email);
+            return estudanteEmail;
+        }
+
         public async Task CreateAsync(Estudante estudante)
         {
             await _context.Estudantes.AddAsync(estudante);

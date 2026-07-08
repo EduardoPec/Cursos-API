@@ -37,6 +37,13 @@ namespace CursosAPI.Services
 
         public async Task CreateAsync(CreateEstudanteDto dto)
         {
+            var emailEstudanteExiste = await _repository.GetByEmailAsync(dto.Email);
+
+            if (emailEstudanteExiste != null)
+            {
+                throw new DuplicatedException($"Já existe um estudante cadastrado com o e-mail: {dto.Email}");
+            }
+
             var estudante = _mapper.Map<Estudante>(dto);
             await _repository.CreateAsync(estudante);
         }  
@@ -44,6 +51,12 @@ namespace CursosAPI.Services
         public async Task UpdateAsync(int id, UpdateEstudanteDto dto)
         {
             var estudante = await _repository.GetByIdAsync(id);
+            var emailEstudanteExiste = await _repository.GetByEmailAsync(dto.Email);
+
+            if (emailEstudanteExiste != null && emailEstudanteExiste.Id != id)
+            {
+                throw new DuplicatedException($"Já existe um estudante cadastrado com o e-mail: {dto.Email}");
+            }
 
             if (estudante == null) 
             { 
@@ -53,6 +66,7 @@ namespace CursosAPI.Services
             _mapper.Map(dto, estudante);
             await _repository.UpdateAsync(estudante);
         }
+
         public async Task DeleteAsync(int id)
         {
             var estudante = await _repository.GetByIdAsync(id);
